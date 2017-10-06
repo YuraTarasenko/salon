@@ -1,0 +1,9 @@
+<h3>Вид деятельности</h3>
+
+<%= link_to 'Изменить', edit_person_path(@person) %>
+|
+<%= link_to 'Удалить', person_path(@person), method: :delete, data: { confirm: 'Вы уверены?' } %>
+
+<h1><%= @person.bio %></h1>
+
+<h2><%= @person.schedule %></h2>
