@@ -1,20 +1,35 @@
-<%= form_for @person do |f| %>
-  <div class="form-control">
+<% if @person.errors.any? %>
+  <div class="alert alert-danger">
+    <h5><%= t('common.errors') %></h5>
+    <ul>
+      <% @person.errors.full_messages.each do |massage| %>
+        <li><%= massage %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for @person, html: { multipart: true } do |f| %>
+  <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
 
-  <div class="form-control">
+  <div class="form-group">
     <%= f.label :bio %>
-    <%= f.text_area :bio %>
+    <%= f.text_area :bio, class: 'form-control' %>
   </div>
 
-  <div class="form-control">
+  <div class="form-group">
     <%= f.label :schedule %>
-    <%= f.text_area :schedule %>
+    <%= f.text_area :schedule, class: 'form-control' %>
   </div>
 
-  <div class="form-control">
-    <%= f.submit 'Сохранить' %>
+  <div class="form-group">
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit t('.submit', action: @person.new_record? ? 'Создать' : 'Изменить'), class: 'btn btn-primary' %>
+    <%= link_to t('common.back'), :back, class: 'btn btn-outline-primary' %>
   </div>
 <% end %>

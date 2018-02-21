@@ -16,9 +16,9 @@ before_action :set_person, only: [:show, :edit, :update, :destroy ]
   def create
     @person = Person.new(person_params)
     if @person.save
-      redirect_to @person
+      redirect_to @person, success: 'Персонал успешно обновлён'
     else
-      render :new
+      render :new, danger: 'Персонал не обновлён'
     end
   end
 
@@ -27,15 +27,15 @@ before_action :set_person, only: [:show, :edit, :update, :destroy ]
 
   def update
     if @person.update_attributes(person_params)
-      redirect_to @person
+      redirect_to @person, success: 'Персонал успешно обновлён'
     else
-      render:edit
+      render :edit, danger: 'Персонал не обновлён'
     end
   end
 
   def destroy
     @person.destroy
-    redirect_to people_path
+    redirect_to people_path, success: 'Персонал успешно удалён'
   end
 
   private
@@ -45,7 +45,7 @@ before_action :set_person, only: [:show, :edit, :update, :destroy ]
   end
 
   def person_params
-    params.require(:person).permit(:name, :bio, :schedule)
+    params.require(:person).permit(:name, :bio, :schedule, :image)
   end
 
 end

@@ -1,0 +1,12 @@
+ru:
+  activerecord:
+    models:
+      person: 'Персонал'
+    attributes:
+      person:
+        name: 'Имя'
+        bio: 'Вид деятельности'
+        schedule: 'График'
+    errors:
+      messages:
+        blank: 'не может быть пустым'

@@ -1,1 +1,18 @@
-  <h2><%= link_to person.name, person_path(person) %></h2>
+<article class="person">
+  <section class="person-head">
+    <h2><%= link_to person.name, person_path(person) %></h2>
+    <small>
+      <time><%= person.created_at.to_date.strftime("%d %B, %Y") %></time>
+      |
+      <%= link_to 'Изменить', edit_person_path(person) %>
+      |
+      <%= link_to 'Удалить', person_path(person), method: :delete, data: { confirm: 'Вы уверены?' } %>
+   </small>
+  </section>
+
+    <section class="person-bio clearfix">
+      <%= image_tag person.image.url(:thumb), class: 'img-thumbnail thumb' if person.image? %>
+      <%= person.bio %>
+    </section>
+  </section>
+ </article>

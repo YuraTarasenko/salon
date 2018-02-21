@@ -1,0 +1,14 @@
+ru:
+  common:
+    errors: 'При заполнении формы возникли ошибки'
+    back: 'Назад'
+  people:
+    index:
+      name: 'Персонал'
+    new:
+      name: 'Добавить персонал'
+    edit:
+      name: 'Редактировать персонал'
+    form:
+      submit:
+        '%{action} персонал'
